@@ -58,6 +58,10 @@ body{
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 17.4px;
+
+    /*animation properties*/
+    animation-name: moveInLeft;
+    animation-duration: 3s
 }
 
 .text-box{
@@ -67,4 +71,21 @@ body{
     left:50%;
     transform: translate(-50%,-50%);/*in relation to itself*/
     /*shifts the text to the middle of itself*/
+}
+
+@keyframes moveInLeft{
+    0%{
+        opacity: 0;/*make invisible*/
+        transform: translateX(-100px)/* x direction animation*/
+    }
+
+
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+
+    /*
+    αφου κανουμε οτι θελουμε εδω μετα παμε και βαζουμε στο element που θελουμε animation-name: 
+    και το animation-duration: */
 }
