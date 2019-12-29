@@ -30,4 +30,41 @@ body{
 
     /*clip-path*/
     clip-path: polygon(0 0,100% 0, 100% 75%, 0 100%);
+    position: relative;
+}
+
+.logo-box{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+.logo{
+    height: 45px;
+}
+
+.heading-primary{
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.heading-primary-main{
+    display: block;/*force a line brake to the spans*/
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+}
+.heading-primary-sub{
+    display: block;/*force a line brake to the spans*/
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+}
+
+.text-box{
+    /*center all the text in the header that we placed in a container.text-box */
+    position: absolute;
+    top:40%;/*in relation to the parent element */
+    left:50%;
+    transform: translate(-50%,-50%);/*in relation to itself*/
+    /*shifts the text to the middle of itself*/
 }
