@@ -1,214 +1,180 @@
-/*
-COLORS:
-
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
-
-*/
-
+@charset "UTF-8";
 *,
-*::after,/*include the pseudo classes to the reset */
-*::before{
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-
-/*set the root font-size to 10px to make everything easier when converting the other units to rem. We do it to ba able later to chnage only the root font-size and change everything at the same time
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  /*set the root font-size to 10px to make everything easier when converting the other units to rem. We do it to ba able later to chnage only the root font-size and change everything at the same time
 1rem = exactly the root font-size 
-*/
-}
-html{
-    /*font-size: 10px;*/
-    /*its a bad practise to set the font-size to pixels because we override the browser settings.
+*/ }
+
+html {
+  /*font-size: 10px;*/
+  /*its a bad practise to set the font-size to pixels because we override the browser settings.
     The best is to set the root font-size to % percentage 
     the default of the browser is -->16px;
     devide the 10px we want with the default 16px; 
     10px/16px=62.5%
     */
+  font-size: 62.5%; }
 
-    font-size: 62.5%;
+body {
+  font-family: "Lato",sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  /*font-size: 16px;*/
+  /*we will change it */
+  line-height: 1.7;
+  /*bigger form the current font-height*/
+  color: #777;
+  margin: 3rem;
+  box-sizing: border-box;
+  /*includes border and padding in the total width and height */ }
 
-}
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  /*as we resize the top/center/ stays the same*/
+  /*clip-path*/
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  position: relative; }
 
-body{
-    font-family: "Lato",sans-serif;
-    font-weight: 400;
-    font-size: 1.6rem;
-    /*font-size: 16px;*/ /*we will change it */
-    line-height: 1.7; /*bigger form the current font-height*/
-    color: #777;
-    margin: 3rem;
-    box-sizing: border-box; /*includes border and padding in the total width and height */
-}
+.header__logo-box {
+  position: absolute;
+  top: 4rem;
+  left: 4rem; }
 
+.header__logo {
+  height: 4.5rem; }
 
-.header{
-    height: 95vh;
-    background-image:linear-gradient(to right bottom,rgba(126,213,111, 0.8),rgba(40,100,131,0.8)), url(../img/hero.jpg);
-    background-size: cover;
-    background-position: top;/*as we resize the top/center/ stays the same*/
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 6rem; }
 
-    /*clip-path*/
-    clip-path: polygon(0 0,100% 0, 100% 75%, 0 100%);
-    position: relative;
-}
+.heading-primary--main {
+  display: block;
+  /*force a line brake to the spans*/
+  font-size: 6rem;
+  font-weight: 400;
+  letter-spacing: 3.5rem;
+  /*animation properties*/
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  /*για να μην κανει κινσηη προς τα πανω το h1 μερικες φορες συμβαινει στα animations*/
+  backface-visibility: hidden;
+  /*the back part of an element is now hidden through an animation*/ }
 
-.header__logo-box{
-    position: absolute;
-    top: 4rem;
-    left: 4rem;
-}
-.header__logo{
-    height: 4.5rem;
-}
+.heading-primary--sub {
+  display: block;
+  /*force a line brake to the spans*/
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1.74rem;
+  /*animation properties*/
+  animation-name: moveInRight;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  backface-visibility: hidden; }
 
-.heading-primary{
-    color: #fff;
-    text-transform: uppercase;
-    margin-bottom: 6rem;
-}
-
-.heading-primary--main{
-    display: block;/*force a line brake to the spans*/
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-
-    /*animation properties*/
-    animation-name: moveInLeft;
-    animation-duration: 1s;
-    animation-timing-function:ease-out;
-
-    /*για να μην κανει κινσηη προς τα πανω το h1 μερικες φορες συμβαινει στα animations*/
-    backface-visibility: hidden;/*the back part of an element is now hidden through an animation*/
-}
-.heading-primary--sub{
-    display: block;/*force a line brake to the spans*/
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.74rem;
-
-    /*animation properties*/
-    animation-name: moveInRight;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
-    backface-visibility: hidden;
-}
-
-.header__text-box{
-    /*center all the text in the header that we placed in a container.text-box */
-    position: absolute;
-    top:40%;/*in relation to the parent element */
-    left:50%;
-    transform: translate(-50%,-50%);/*in relation to itself*/
-    /*shifts the text to the middle of itself*/
-
-    text-align: center;/*θα ευθηγραμμισει το κειμενο και το link button επειδη ειναι inline element */
-}
+.header__text-box {
+  /*center all the text in the header that we placed in a container.text-box */
+  position: absolute;
+  top: 40%;
+  /*in relation to the parent element */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*in relation to itself*/
+  /*shifts the text to the middle of itself*/
+  text-align: center;
+  /*θα ευθηγραμμισει το κειμενο και το link button επειδη ειναι inline element */ }
 
 /*------button for the herobox -------------*/
 .btn:link,
-.btn:visited{
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1.5rem 4rem;
-    border-radius: 10rem;
-    display: inline-block;
-
-    /*animation*/
-    transition: all .2s;
-    position: relative;
-    z-index: 1;
-}
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  border-radius: 10rem;
+  display: inline-block;
+  /*animation*/
+  transition: all .2s;
+  position: relative;
+  z-index: 1; }
 
 .btn--white:link,
-.btn--white:visited{
-    background-color: #fff;
-    color: #777;
-}
+.btn--white:visited {
+  background-color: #fff;
+  color: #777; }
 
-.btn:hover{
-    /*move the button up*/
-    transform: translateY(-0.3rem);
-
-    box-shadow: 0 1rem 2rem rgba(0,0,0, 0.2);
-}
+.btn:hover {
+  /*move the button up*/
+  transform: translateY(-0.3rem);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
 
 /*αφου το κανουμε click παει λιγο κατω */
-.btn:active{
-    transform: translateY(-0.1rem);
-
-    box-shadow: 0 0.5rem 1rem rgba(0,0,0, 0.2);
-}
+.btn:active {
+  transform: translateY(-0.1rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
 
 /*pseudo element προσθετει ενα virtual element ακριβως μετα το element που εχουμε επιλεξει. Μπορουμε μετα να κανουμε οτι θελουμε με css σε αυτο το element */
-.btn::after{
-    /*το element που θα βαλουμε εδω θα ειναι σαν το element που επιλεξαμε και θα το βαλουμε πισω απο το element ετσι ωστε οταν κανουμε hover να του λεμε να παει μπροστα.
+.btn::after {
+  /*το element που θα βαλουμε εδω θα ειναι σαν το element που επιλεξαμε και θα το βαλουμε πισω απο το element ετσι ωστε οταν κανουμε hover να του λεμε να παει μπροστα.
     */
+  content: "";
+  /*ακομα και αδειο πρπει να υπαρχει */
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  /*ειναι σαν παιδι του οριτζιναλ ελεμεντ για αυτο δουλευουν αυτα*/
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.4s; }
 
-    content:""; /*ακομα και αδειο πρπει να υπαρχει */
-    display: inline-block;
-    height: 100%;
-    width: 100%;/*ειναι σαν παιδι του οριτζιναλ ελεμεντ για αυτο δουλευουν αυτα*/
-    border-radius: 10rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: all 0.4s;
-}
+.btn--white::after {
+  background-color: #fff;
+  z-index: -1; }
 
-.btn--white::after{
-    background-color: #fff;
-    z-index: -1;
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  /*το scale μεγαλωνει το element αναλογα επι οσο του βαλουμε*/
+  opacity: 0; }
 
-}
+.btn--animated {
+  animation: moveInBottom 1s ease-out 0.75s;
+  animation-fill-mode: backwards; }
 
-.btn:hover::after{
-    transform: scaleX(1.4) scaleY(1.6);/*το scale μεγαλωνει το element αναλογα επι οσο του βαλουμε*/
+@keyframes moveInLeft {
+  0% {
     opacity: 0;
-}
-
-
-.btn--animated{
-    animation: moveInBottom 1s ease-out 0.75s;
-    animation-fill-mode: backwards;
-}
-
-@keyframes moveInLeft{
-    0%{
-        opacity: 0;/*make invisible*/
-        transform: translateX(-10rem)/* x direction animation*/
-    }
-
-    80%{
-        transform: translateX(1rem);/*για να φευγει στα δεξια παραπανω απο την μεση*/
-    }
-    100%{
-        opacity: 1;
-        transform: translate(0);
-    }
-
-    /*
+    /*make invisible*/
+    transform: translateX(-10rem); }
+  80% {
+    transform: translateX(1rem);
+    /*για να φευγει στα δεξια παραπανω απο την μεση*/ }
+  100% {
+    opacity: 1;
+    transform: translate(0); }
+  /*
     αφου κανουμε οτι θελουμε εδω μετα παμε και βαζουμε στο element που θελουμε animation-name: 
-    και το animation-duration: . Στο ενα βαζουμε το ονομα του animation που φτιαξαμε με keyframes και στο αλλο την διαρκεια που θελουμε να εχει */
-}
+    και το animation-duration: . Στο ενα βαζουμε το ονομα του animation που φτιαξαμε με keyframes και στο αλλο την διαρκεια που θελουμε να εχει */ }
 
-@keyframes moveInRight{
-    0%{
-        opacity:0;
-        transform: translateX(+10rem);
-    }
-
-    80%{
-        transform: translate(-1rem);
-    }
-    100%{
-        opacity: 1;
-        transform: translateX(0);
-    }
-
-    /*αλλα properties για τα animation 
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    transform: translate(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translateX(0); }
+  /*αλλα properties για τα animation 
     *animation-name:
     *animation-delay:
     *animation-duration:
@@ -217,18 +183,12 @@ body{
 
     animation: moveInRight 1s ease-out; συντομη γραφη ολων
     */
+  /* μπορουμε να το ξανα βαλουμε το animation οπου θελουμε και σε αλλα elements ακομα και σε pseudo class για hover */ }
 
-    /* μπορουμε να το ξανα βαλουμε το animation οπου θελουμε και σε αλλα elements ακομα και σε pseudo class για hover */
-}
-
-@keyframes moveInBottom{
-    0%{
-        opacity:0;
-        transform: translateY(20rem);
-    }
-
-    100%{
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(20rem); }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }

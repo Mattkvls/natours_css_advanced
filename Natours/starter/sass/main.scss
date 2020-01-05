@@ -1,11 +1,13 @@
-/*
-COLORS:
 
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
 
-*/
+
+$color-primary:#55c57a;
+$color-primary-light:#7ed56f;
+$color-primary-dark:#28b485;
+$color-grey-dark:#777;
+$color-white:#fff;
+$color-black:#000;
+
 
 *,
 *::after,/*include the pseudo classes to the reset */
@@ -37,7 +39,7 @@ body{
     font-size: 1.6rem;
     /*font-size: 16px;*/ /*we will change it */
     line-height: 1.7; /*bigger form the current font-height*/
-    color: #777;
+    color: $color-grey-dark;
     margin: 3rem;
     box-sizing: border-box; /*includes border and padding in the total width and height */
 }
@@ -45,135 +47,122 @@ body{
 
 .header{
     height: 95vh;
-    background-image:linear-gradient(to right bottom,rgba(126,213,111, 0.8),rgba(40,100,131,0.8)), url(../img/hero.jpg);
+    background-image:linear-gradient(to right bottom,rgba($color-primary-light, 0.8),rgba($color-primary-dark,0.8)), url(../img/hero.jpg);
     background-size: cover;
     background-position: top;/*as we resize the top/center/ stays the same*/
 
     /*clip-path*/
     clip-path: polygon(0 0,100% 0, 100% 75%, 0 100%);
     position: relative;
+
+    &__logo-box{
+        position: absolute;
+        top: 4rem;
+        left: 4rem;
+    }
+    &__logo{
+        height: 4.5rem;
+    }
+    &__text-box{
+        /*center all the text in the header that we placed in a container.text-box */
+        position: absolute;
+        top:40%;/*in relation to the parent element */
+        left:50%;
+        transform: translate(-50%,-50%);/*in relation to itself*/
+        /*shifts the text to the middle of itself*/
+    
+        text-align: center;/*θα ευθηγραμμισει το κειμενο και το link button επειδη ειναι inline element */
+    }
+    
 }
 
-.header__logo-box{
-    position: absolute;
-    top: 4rem;
-    left: 4rem;
-}
-.header__logo{
-    height: 4.5rem;
-}
 
 .heading-primary{
-    color: #fff;
+    color:$color-white;
     text-transform: uppercase;
     margin-bottom: 6rem;
+
+    &--main{
+        display: block;/*force a line brake to the spans*/
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
+    
+        /*animation properties*/
+        animation-name: moveInLeft;
+        animation-duration: 1s;
+        animation-timing-function:ease-out;
+    
+        /*για να μην κανει κινσηη προς τα πανω το h1 μερικες φορες συμβαινει στα animations*/
+        backface-visibility: hidden;/*the back part of an element is now hidden through an animation*/
+    }
+    &--sub{
+        display: block;/*force a line brake to the spans*/
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1.74rem;
+    
+        /*animation properties*/
+        animation-name: moveInRight;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+        backface-visibility: hidden;
+    }
 }
 
-.heading-primary--main{
-    display: block;/*force a line brake to the spans*/
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-
-    /*animation properties*/
-    animation-name: moveInLeft;
-    animation-duration: 1s;
-    animation-timing-function:ease-out;
-
-    /*για να μην κανει κινσηη προς τα πανω το h1 μερικες φορες συμβαινει στα animations*/
-    backface-visibility: hidden;/*the back part of an element is now hidden through an animation*/
-}
-.heading-primary--sub{
-    display: block;/*force a line brake to the spans*/
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.74rem;
-
-    /*animation properties*/
-    animation-name: moveInRight;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
-    backface-visibility: hidden;
-}
-
-.header__text-box{
-    /*center all the text in the header that we placed in a container.text-box */
-    position: absolute;
-    top:40%;/*in relation to the parent element */
-    left:50%;
-    transform: translate(-50%,-50%);/*in relation to itself*/
-    /*shifts the text to the middle of itself*/
-
-    text-align: center;/*θα ευθηγραμμισει το κειμενο και το link button επειδη ειναι inline element */
-}
 
 /*------button for the herobox -------------*/
-.btn:link,
-.btn:visited{
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1.5rem 4rem;
-    border-radius: 10rem;
-    display: inline-block;
 
-    /*animation*/
-    transition: all .2s;
-    position: relative;
-    z-index: 1;
+.btn{
+    &--white{
+        background-color:$color-grey-dark;
+        color:$color-grey-dark;
+
+        &::after{
+            background-color: $color-white;
+            z-index: -1;
+    
+        }
+    }
+
+    &:hover{
+        /*move the button up*/
+        transform: translateY(-0.3rem);
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+
+        &::after{
+            transform: scaleX(1.4) scaleY(1.6);/*το scale μεγαλωνει το element αναλογα επι οσο του βαλουμε*/
+            opacity: 0;
+        }
+    }
+
+    /*αφου το κανουμε click παει λιγο κατω */
+    &:active{
+        transform: translateY(-0.1rem);
+        box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+    }
+
+    /*pseudo element προσθετει ενα virtual element ακριβως μετα το element που εχουμε επιλεξει. Μπορουμε μετα να κανουμε οτι θελουμε με css σε αυτο το element */
+    &::after{
+        /*το element που θα βαλουμε εδω θα ειναι σαν το element που επιλεξαμε και θα το βαλουμε πισω απο το element ετσι ωστε οταν κανουμε hover να του λεμε να παει μπροστα.
+        */
+        content:""; /*ακομα και αδειο πρπει να υπαρχει */
+        display: inline-block;
+        height: 100%;
+        width: 100%;/*ειναι σαν παιδι του οριτζιναλ ελεμεντ για αυτο δουλευουν αυτα*/
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: all 0.4s;
+    }
+
+    &--animated{
+        animation: moveInBottom 1s ease-out 0.75s;
+        animation-fill-mode: backwards;
+    }
 }
 
-.btn--white:link,
-.btn--white:visited{
-    background-color: #fff;
-    color: #777;
-}
-
-.btn:hover{
-    /*move the button up*/
-    transform: translateY(-0.3rem);
-
-    box-shadow: 0 1rem 2rem rgba(0,0,0, 0.2);
-}
-
-/*αφου το κανουμε click παει λιγο κατω */
-.btn:active{
-    transform: translateY(-0.1rem);
-
-    box-shadow: 0 0.5rem 1rem rgba(0,0,0, 0.2);
-}
-
-/*pseudo element προσθετει ενα virtual element ακριβως μετα το element που εχουμε επιλεξει. Μπορουμε μετα να κανουμε οτι θελουμε με css σε αυτο το element */
-.btn::after{
-    /*το element που θα βαλουμε εδω θα ειναι σαν το element που επιλεξαμε και θα το βαλουμε πισω απο το element ετσι ωστε οταν κανουμε hover να του λεμε να παει μπροστα.
-    */
-
-    content:""; /*ακομα και αδειο πρπει να υπαρχει */
-    display: inline-block;
-    height: 100%;
-    width: 100%;/*ειναι σαν παιδι του οριτζιναλ ελεμεντ για αυτο δουλευουν αυτα*/
-    border-radius: 10rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: all 0.4s;
-}
-
-.btn--white::after{
-    background-color: #fff;
-    z-index: -1;
-
-}
-
-.btn:hover::after{
-    transform: scaleX(1.4) scaleY(1.6);/*το scale μεγαλωνει το element αναλογα επι οσο του βαλουμε*/
-    opacity: 0;
-}
-
-
-.btn--animated{
-    animation: moveInBottom 1s ease-out 0.75s;
-    animation-fill-mode: backwards;
-}
 
 @keyframes moveInLeft{
     0%{
