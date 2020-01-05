@@ -1,0 +1,27 @@
+*,
+*::after,/*include the pseudo classes to the reset */
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+
+/*set the root font-size to 10px to make everything easier when converting the other units to rem. We do it to ba able later to chnage only the root font-size and change everything at the same time
+1rem = exactly the root font-size 
+*/
+}
+html{
+    /*font-size: 10px;*/
+    /*its a bad practise to set the font-size to pixels because we override the browser settings.
+    The best is to set the root font-size to % percentage 
+    the default of the browser is -->16px;
+    devide the 10px we want with the default 16px; 
+    10px/16px=62.5%
+    */
+
+    font-size: 62.5%;
+
+}
+
+body{
+    box-sizing: border-box; /*includes border and padding in the total width and height */
+}

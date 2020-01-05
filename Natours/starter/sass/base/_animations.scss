@@ -1,0 +1,58 @@
+
+@keyframes moveInLeft{
+    0%{
+        opacity: 0;/*make invisible*/
+        transform: translateX(-10rem)/* x direction animation*/
+    }
+
+    80%{
+        transform: translateX(1rem);/*για να φευγει στα δεξια παραπανω απο την μεση*/
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+
+    /*
+    αφου κανουμε οτι θελουμε εδω μετα παμε και βαζουμε στο element που θελουμε animation-name: 
+    και το animation-duration: . Στο ενα βαζουμε το ονομα του animation που φτιαξαμε με keyframes και στο αλλο την διαρκεια που θελουμε να εχει */
+}
+
+@keyframes moveInRight{
+    0%{
+        opacity:0;
+        transform: translateX(+10rem);
+    }
+
+    80%{
+        transform: translate(-1rem);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /*αλλα properties για τα animation 
+    *animation-name:
+    *animation-delay:
+    *animation-duration:
+    *animation-iteration-count: θα συμβει τοσες φορες
+    *animation-timing-function:  πως θα εξεληχθει το animation απο γρηφορα αργα κτλ eg (ease-out)
+
+    animation: moveInRight 1s ease-out; συντομη γραφη ολων
+    */
+
+    /* μπορουμε να το ξανα βαλουμε το animation οπου θελουμε και σε αλλα elements ακομα και σε pseudo class για hover */
+}
+
+@keyframes moveInBottom{
+    0%{
+        opacity:0;
+        transform: translateY(20rem);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
