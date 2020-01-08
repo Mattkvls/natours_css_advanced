@@ -1,0 +1,8 @@
+@mixin clearfix{
+    &::after{
+        content:""; //always have the content. empty because we dont want to see the element on the page 
+        display: table; 
+        clear:both; //will do the job clear float left and float right 
+
+    }
+}
