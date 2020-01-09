@@ -56,7 +56,6 @@
 //      }
 //  }
 
-
 // /*the old code to replace the code above*/
 // /*------button for the herobox -------------*/
  .btn{
@@ -67,11 +66,13 @@
          padding: 1.5rem 4rem;
          border-radius: 10rem;
          display: inline-block;
+         font-size: $default-font-size;
 
          /*animation*/
          transition: all .2s;
          position: relative;
          z-index: 1;
+         
      }
 
      &--white:link,
@@ -127,10 +128,33 @@
          animation: moveInBottom 1s ease-out 0.75s;
          animation-fill-mode: backwards;
      }
-
  }
 
 
-
+.btn{
+    &-text:link,
+    &-text:visited{
+        font-size: $default-font-size;
+        color: $color-primary;
+        display: inline-block; /*so we can use the box-model properties*/
+        text-decoration: none;
+        border-bottom: 1px solid $color-primary;
+        padding: 3px;
+        transition: all 0.2s;
+    }
+    &-text:hover{
+        /*moves up and has shadow */
+        background-color: $color-primary;
+        color: $color-white;
+        /*x y blur color */
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform: translateY(-2px);
+    }
+    &-text:active{
+        /*when clicked moves down*/
+        box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+        transform: translateY(0px);
+    }
+}
 
 
