@@ -5,6 +5,7 @@
     background-position: top;/*as we resize the top/center/ stays the same*/
 
     /*clip-path*/
+    -webkit-clip-path: polygon(0 0,100% 0, 100% 75%, 0 100%);
     clip-path: polygon(0 0,100% 0, 100% 75%, 0 100%);
     position: relative;
 

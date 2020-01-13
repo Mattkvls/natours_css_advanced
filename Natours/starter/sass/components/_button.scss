@@ -58,103 +58,198 @@
 
 // /*the old code to replace the code above*/
 // /*------button for the herobox -------------*/
- .btn{
-     &:link,
-     &:visited{
-         text-transform: uppercase;
-         text-decoration: none;
-         padding: 1.5rem 4rem;
-         border-radius: 10rem;
-         display: inline-block;
-         font-size: $default-font-size;
+//  .btn{
+//      &:link,
+//      &:visited{
+//          text-transform: uppercase;
+//          text-decoration: none;
+//          padding: 1.5rem 4rem;
+//          border-radius: 10rem;
+//          display: inline-block;
+//          font-size: $default-font-size;
 
-         /*animation*/
-         transition: all .2s;
-         position: relative;
-         z-index: 1;
+//          /*animation*/
+//          transition: all .2s;
+//          position: relative;
+//          z-index: 1;
          
-     }
+//      }
 
-     &--white:link,
-     &--white:visited{
-         background-color: #fff;
-         color: #777;
+//      &--white:link,
+//      &--white:visited{
+//          background-color: #fff;
+//          color: #777;
          
-     }
+//      }
 
-     &:hover{
-         /*move the button up*/
-         transform: translateY(-0.3rem);
+//      &:hover{
+//          /*move the button up*/
+//          transform: translateY(-0.3rem);
 
-         box-shadow: 0 1rem 2rem rgba(0,0,0, 0.2);
+//          box-shadow: 0 1rem 2rem rgba(0,0,0, 0.2);
 
-         &::after{
-            transform: scaleX(1.4) scaleY(1.6);/*το scale μεγαλωνει το element αναλογα επι οσο του βαλουμε*/
+//          &::after{
+//             transform: scaleX(1.4) scaleY(1.6);/*το scale μεγαλωνει το element αναλογα επι οσο του βαλουμε*/
+//             opacity: 0;
+//         }
+//      }
+
+//      /*αφου το κανουμε click παει λιγο κατω */
+//      &:active{
+//          transform: translateY(-0.1rem);
+
+//          box-shadow: 0 0.5rem 1rem rgba(0,0,0, 0.2);
+//      }
+
+//      /*pseudo element προσθετει ενα virtual element ακριβως μετα το element που εχουμε επιλεξει. Μπορουμε μετα να κανουμε οτι θελουμε με css σε αυτο το element */
+//      &::after{
+//          /*το element που θα βαλουμε εδω θα ειναι σαν το element που επιλεξαμε και θα το βαλουμε πισω απο το element ετσι ωστε οταν κανουμε hover να του λεμε να παει μπροστα.
+//          */
+
+//          content:""; /*ακομα και αδειο πρπει να υπαρχει */
+//          display: inline-block;
+//          height: 100%;
+//          width: 100%;/*ειναι σαν παιδι του οριτζιναλ ελεμεντ για αυτο δουλευουν αυτα*/
+//          border-radius: 10rem;
+//          position: absolute;
+//          top: 0;
+//          left: 0;
+//          transition: all 0.4s;
+//      }
+
+//      &--white::after{
+//          background-color: #fff;
+//          z-index: -1;
+
+//      }
+
+
+//      &--animated{
+//          animation: moveInBottom 1s ease-out 0.75s;
+//          animation-fill-mode: backwards;
+//      }
+//  }
+
+
+// .btn{
+//     &-text:link,
+//     &-text:visited{
+//         font-size: $default-font-size;
+//         color: $color-primary;
+//         display: inline-block; /*so we can use the box-model properties*/
+//         text-decoration: none;
+//         border-bottom: 1px solid $color-primary;
+//         padding: 3px;
+//         transition: all 0.2s;
+//     }
+//     &-text:hover{
+//         /*moves up and has shadow */
+//         background-color: $color-primary;
+//         color: $color-white;
+//         /*x y blur color */
+//         box-shadow: 0 1rem 2rem rgba($color-black, .15);
+//         transform: translateY(-2px);
+//     }
+//     &-text:active{
+//         /*when clicked moves down*/
+//         box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+//         transform: translateY(0px);
+//     }
+// }
+
+.btn {
+    &,
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block;
+        border-radius: 10rem;
+        transition: all .2s;
+        position: relative;
+        font-size: $default-font-size;
+
+        //Change for the <button> element
+        border: none;
+        cursor: pointer;
+    }
+    
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-black,.2);
+
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
             opacity: 0;
         }
-     }
-
-     /*αφου το κανουμε click παει λιγο κατω */
-     &:active{
-         transform: translateY(-0.1rem);
-
-         box-shadow: 0 0.5rem 1rem rgba(0,0,0, 0.2);
-     }
-
-     /*pseudo element προσθετει ενα virtual element ακριβως μετα το element που εχουμε επιλεξει. Μπορουμε μετα να κανουμε οτι θελουμε με css σε αυτο το element */
-     &::after{
-         /*το element που θα βαλουμε εδω θα ειναι σαν το element που επιλεξαμε και θα το βαλουμε πισω απο το element ετσι ωστε οταν κανουμε hover να του λεμε να παει μπροστα.
-         */
-
-         content:""; /*ακομα και αδειο πρπει να υπαρχει */
-         display: inline-block;
-         height: 100%;
-         width: 100%;/*ειναι σαν παιδι του οριτζιναλ ελεμεντ για αυτο δουλευουν αυτα*/
-         border-radius: 10rem;
-         position: absolute;
-         top: 0;
-         left: 0;
-         transition: all 0.4s;
-     }
-
-     &--white::after{
-         background-color: #fff;
-         z-index: -1;
-
-     }
-
-
-     &--animated{
-         animation: moveInBottom 1s ease-out 0.75s;
-         animation-fill-mode: backwards;
-     }
- }
-
-
-.btn{
-    &-text:link,
-    &-text:visited{
-        font-size: $default-font-size;
-        color: $color-primary;
-        display: inline-block; /*so we can use the box-model properties*/
-        text-decoration: none;
-        border-bottom: 1px solid $color-primary;
-        padding: 3px;
-        transition: all 0.2s;
     }
-    &-text:hover{
-        /*moves up and has shadow */
+    
+    &:active,
+    &:focus {
+        outline: none;
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba($color-black,.2);
+    }
+    
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+
+        &::after {
+            background-color: $color-white;
+        }
+    }
+
+    &--green {
         background-color: $color-primary;
         color: $color-white;
-        /*x y blur color */
-        box-shadow: 0 1rem 2rem rgba($color-black, .15);
-        transform: translateY(-2px);
+
+        &::after {
+            background-color: $color-primary;
+        }
     }
-    &-text:active{
-        /*when clicked moves down*/
-        box-shadow: 0 .5rem 1rem rgba($color-black, .15);
-        transform: translateY(0px);
+    
+    &::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+    }
+    
+    &--animated {
+        animation: moveInBottom .5s ease-out .75s;
+        animation-fill-mode: backwards;
     }
 }
 
+.btn-text {
+    &:link,
+    &:visited {
+        font-size: $default-font-size;
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 1px solid $color-primary;
+        padding: 3px;
+        transition: all .2s;
+    }
 
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+        transform: translateY(0);
+    }
+}
