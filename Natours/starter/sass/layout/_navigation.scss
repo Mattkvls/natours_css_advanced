@@ -1,0 +1,134 @@
+.navigation{
+    &__checkbox{
+        display: none;
+    }
+    &__button{
+        background-color: $color-white;
+        height: 7rem;
+        width: 7rem;
+        position: fixed;
+        top: 6rem;
+        right: 6rem;
+        border-radius: 50%;
+        z-index: 2000;
+        box-shadow: 0 1rem 3rem rgba($color-black, .1); //shadow to the round navigation button
+        text-align: center; //will center the icon inside the button
+        cursor: pointer;
+    }
+    &__background{
+        height: 6rem;
+        width: 6rem;
+        border-radius: 50%;
+        position: fixed; //while we scroll remains at the same position like absolute 
+        top: 6.5rem;
+        right: 6.5rem;
+        background-image: radial-gradient($color-primary-light, $color-primary-dark);
+        z-index: 1000;
+        transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1);// takes 4 numbers that define the cubic-bezier curve use the easing functions cheat sheet https://easings.net/en
+        //
+    }
+    &__nav{
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1500;
+        //make the navigation invisible 
+        opacity: 0;
+        width: 0;
+        transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    &__list{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: (-50%, -50%);
+        list-style-type: none;
+        text-align: center;
+    }
+    &__item{
+
+    }
+    &__link{
+        &:link,
+        &:visited{
+            display: inline-block;
+            font-size: 3rem;
+            font-weight: 300;
+            padding: 1rem 2rem;
+            color: $color-white;
+            text-decoration: none;
+            text-transform: uppercase;
+            background-size: 220%;
+            transition: all .4s;
+
+            span{
+                margin-right: 1.5rem;
+                display: inline-block;
+            }
+        }
+
+        &:hover,
+        &:active{
+            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
+            background-position: 100%;
+            color: $color-primary;
+            transform: translate-X(4rem);
+        }
+    }
+
+    //FUNCTIONALITY
+    &__checkbox:checked ~&__background{
+        transform: scale(80);
+    }
+    &__checkbox:checked ~&__nav{
+        opacity: 1;
+        width: 100%;
+    }
+   
+
+    //ICON
+    &__icon{
+        position: relative;
+        margin-top: 3.5rem;
+        &,
+        &::before,
+        &::after{
+           width: 3rem;
+           height: 2px; 
+           background-color: $color-grey-dark-3;
+           display: inline-block;
+
+        }
+        &::before,
+        &::after{
+            content: "";
+            position: absolute;
+            left: 0;
+            transition: top .2s;
+        }
+        &::before{top: -.8rem;}
+        &::after{top:.8rem};
+    }
+
+    //we select the icon when we hover the button
+    //we can do it this way because the icon is a child of the button 
+    &__button:hover &__icon{
+        &::before{top: -1rem;}
+        &::after{top:1rem};
+    }
+
+    //we make the span middle line to disappear and the other two to rotate and cross 
+    &__checkbox:checked+&__button &__icon{
+            background-color: transparent;
+        }
+    //rotate them and move them so they cross  
+    &__checkbox:checked+&__button &__icon::before{
+        top: 0;
+            transform: rotate(135deg);
+        }
+    &__checkbox:checked+&__button &__icon::after{
+        top: 0;
+            transform: rotate(-135deg);
+        }
+}
